@@ -22,6 +22,8 @@ services:
         image: prom/node-exporter-linux-armv7
         ports:
             - "9100:9100"
+        command:
+          - '--web.disable-exporter-metrics'
         restart: on-failure
     grafana:
         container_name: grafana
