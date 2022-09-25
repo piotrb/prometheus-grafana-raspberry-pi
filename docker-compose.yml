@@ -3,10 +3,10 @@ version: '3'
 services:
     prometheus:
         container_name: prometheus
-        # If running on a 32-bit Raspberry Pi, use:
-        # image: prom/prometheus:v1.7.2
-        build: ./prometheus
+        image: prom/prometheus
         volumes:
+            - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+            - ./prometheus/alert.rules:/etc/prometheus/alert.rules
             - prometheus_data:/prometheus
         command:
             - '--config.file=/etc/prometheus/prometheus.yml'
