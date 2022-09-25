@@ -16,7 +16,7 @@ services:
             - '--web.enable-lifecycle'
         ports:
             - "9090:9090"
-        restart: on-failure
+        restart: unless-stopped
     node-exporter:
         container_name: node-exporter
         image: prom/node-exporter-linux-armv7
@@ -38,7 +38,7 @@ services:
             - prometheus
         ports:
             - "3000:3000"
-        restart: on-failure
+        restart: unless-stopped
     alertmanager:
         container_name: alertmanager
         build: ./alertmanager
@@ -46,7 +46,7 @@ services:
             - '--config.file=/alertmanager.yml'
         ports:
             - "9093:9093"
-        restart: on-failure
+        restart: unless-stopped
 volumes:
     prometheus_data: {}
     grafana_data: {}
