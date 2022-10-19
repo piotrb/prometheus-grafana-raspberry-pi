@@ -17,6 +17,7 @@ services:
         ports:
             - "9090:9090"
         restart: unless-stopped
+        network_mode: host
     node-exporter:
         container_name: node-exporter
         image: prom/node-exporter-linux-armv7
@@ -24,6 +25,7 @@ services:
             - "9100:9100"
         command:
           - '--web.disable-exporter-metrics'
+        network_mode: host
         restart: on-failure
     grafana:
         container_name: grafana
@@ -40,6 +42,7 @@ services:
             - prometheus
         ports:
             - "3000:3000"
+        network_mode: host
         restart: unless-stopped
     alertmanager:
         container_name: alertmanager
@@ -48,6 +51,7 @@ services:
             - '--config.file=/alertmanager.yml'
         ports:
             - "9093:9093"
+        network_mode: host
         restart: unless-stopped
 volumes:
     prometheus_data: {}

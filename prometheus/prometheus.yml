@@ -9,11 +9,11 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'node-exporter'
     static_configs:
-      - targets: ['node-exporter:9100']
+      - targets: ['localhost:9100']
 alerting:
   alertmanagers:
     - scheme: http
       static_configs:
-      - targets: ['alertmanager:9093']
+      - targets: ['localhost:9093']
 #rule_files:
 #  - 'alert.rules'
